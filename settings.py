@@ -1,7 +1,7 @@
-MUSIC_VOLUME = 0.3031385322858785
-SOUND_VOLUME = 0.5
-BTN1 = 'up'
-BTN2 = 'down'
-BTN3 = 'left'
-BTN4 = 'right'
+MUSIC_VOLUME = 0.0
+SOUND_VOLUME = 0.0
+BTN1 = 'a'
+BTN2 = 'd'
+BTN3 = 'w'
+BTN4 = 's'
 BTN5 = 'spacebar'
