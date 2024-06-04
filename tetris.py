@@ -17,8 +17,13 @@ from random import uniform
 from tkinter import Tk
 import os
 import random
+import json
 
-diff= float
+with open('settings.json', 'r') as f:
+    data = json.load(f)
+    settings = data
+
+diff = float
 win = Tk()
 screen_width = win.winfo_screenwidth()
 screen_height = win.winfo_screenheight()
@@ -26,7 +31,7 @@ screen_height = win.winfo_screenheight()
 Window.fullscreen = 'auto'
 ROWS = 23
 COLS = 19
-FPS = 50
+FPS = 24
 
 BLACK = (0.082, 0.094, 0.114)
 BLUE = (0.122, 0.098, 0.298)
@@ -243,23 +248,22 @@ class TetrisGame(Widget):
         self.update_canvas()
 
     def on_key_down(self, keyboard, keycode, text, modifiers):
-        from settings import BTN1, BTN2, BTN3, BTN4, BTN5
         if self.can_move and not self.gameover:
-            if keycode[1] == str(BTN1):
+            if keycode[1] == str(settings['BTN1']):
                 self.sound_player = MusicPlayer()
                 self.sound_player.sound5.play()
                 self.go_side(-1)
-            elif keycode[1] == str(BTN2):
+            elif keycode[1] == str(settings['BTN2']):
                 self.sound_player = MusicPlayer()
                 self.sound_player.sound5.play()
                 self.go_side(1)
-            elif keycode[1] == str(BTN3):
+            elif keycode[1] == str(settings['BTN3']):
                 self.sound_player = MusicPlayer()
                 self.sound_player.sound6.play()
                 self.rotate()
-            elif keycode[1] == str(BTN4):
+            elif keycode[1] == str(settings['BTN4']):
                 self.move_down = True
-            elif keycode[1] == str(BTN5):
+            elif keycode[1] == str(settings['BTN5']):
                 self.sound_player = MusicPlayer()
                 self.sound_player.sound7.play()
                 self.go_space()
@@ -276,8 +280,7 @@ class TetrisGame(Widget):
             parent_widget.current = 'main'
 
     def on_key_up(self, keyboard, keycode):
-        from settings import BTN4
-        if keycode[1] == str(BTN4):
+        if keycode[1] == str(settings['BTN4']):
             self.move_down = False
 
 class TetrisScreen(Screen):
@@ -318,17 +321,16 @@ class MusicPlayer:
 
     def load_settings(self):
         try:
-            from settings import MUSIC_VOLUME, SOUND_VOLUME
-            self.music.volume = MUSIC_VOLUME
-            self.sound1.volume = SOUND_VOLUME
-            self.sound2.volume = SOUND_VOLUME
-            self.sound3.volume = SOUND_VOLUME
-            self.sound4.volume = SOUND_VOLUME
-            self.sound5.volume = SOUND_VOLUME / 3
-            self.sound6.volume = SOUND_VOLUME
-            self.sound7.volume = SOUND_VOLUME
-            self.sound8.volume = SOUND_VOLUME
-            self.sound9.volume = SOUND_VOLUME
+            self.music.volume = settings['MUSIC_VOLUME']
+            self.sound1.volume = settings['SOUND_VOLUME']
+            self.sound2.volume = settings['SOUND_VOLUME']
+            self.sound3.volume = settings['SOUND_VOLUME']
+            self.sound4.volume = settings['SOUND_VOLUME']
+            self.sound5.volume = settings['SOUND_VOLUME'] / 3
+            self.sound6.volume = settings['SOUND_VOLUME']
+            self.sound7.volume = settings['SOUND_VOLUME']
+            self.sound8.volume = settings['SOUND_VOLUME']
+            self.sound9.volume = settings['SOUND_VOLUME']
         except ImportError:
             self.music.volume = 0.5
             self.sound1.volume = 0.5
@@ -465,9 +467,7 @@ class Page1(Screen):
 
 class Page2(Screen):
     def __init__(self, **kwargs):
-        from settings import SOUND_VOLUME, MUSIC_VOLUME, BTN1, BTN2, BTN3, BTN4, BTN5
         super(Page2, self).__init__(**kwargs)
-
         main_layout = BoxLayout(orientation='vertical', spacing=25/1080*screen_height, padding=(30/1920*screen_width, 15/1080*screen_height, 30/1920*screen_width, 30/1080*screen_height))
         music_layout = BoxLayout(orientation='horizontal')
         self.music_slider = Slider(min=0, max=1, value=0.5)
@@ -479,19 +479,19 @@ class Page2(Screen):
         music_layout.add_widget(sound_label)
         music_layout.add_widget(self.sound_slider)
         main_layout.add_widget(music_layout)
-        self.music_slider.value = MUSIC_VOLUME
-        self.sound_slider.value = SOUND_VOLUME
+        self.music_slider.value = settings['MUSIC_VOLUME']
+        self.sound_slider.value = settings['SOUND_VOLUME']
         layout_1 = GridLayout(cols=2, spacing=10/1080*screen_height, padding=(740/1920*screen_width, 30/1080*screen_height, 740/1920*screen_width, 30/1080*screen_height))
         label_1 = Label(text='Пересунути вліво:', size_hint=(None, None), size=(170/1920*screen_width, 30/1080*screen_height))
-        self.inp1 = Button(text=BTN1, on_press=self.select_button1, size=(200/1920*screen_width, 30/1080*screen_height))
+        self.inp1 = Button(text=settings['BTN1'], on_press=self.select_button1, size=(200/1920*screen_width, 30/1080*screen_height))
         label_2 = Label(text='Пересунути вправо:', size_hint=(None, None), size=(170/1920*screen_width, 30/1080*screen_height))
-        self.inp2 = Button(text=BTN2, on_press=self.select_button2, size=(200/1920*screen_width, 30/1080*screen_height))
+        self.inp2 = Button(text=settings['BTN2'], on_press=self.select_button2, size=(200/1920*screen_width, 30/1080*screen_height))
         label_3 = Label(text='Перевернути:', size_hint=(None, None), size=(170/1920*screen_width, 30/1080*screen_height))
-        self.inp3 = Button(text=BTN3, on_press=self.select_button3, size=(200/1920*screen_width, 30/1080*screen_height))
+        self.inp3 = Button(text=settings['BTN3'], on_press=self.select_button3, size=(200/1920*screen_width, 30/1080*screen_height))
         label_4 = Label(text='Пришвидшити:', size_hint=(None, None), size=(170/1920*screen_width, 30/1080*screen_height))
-        self.inp4 = Button(text=BTN4, on_press=self.select_button4, size=(200/1920*screen_width, 30/1080*screen_height))
+        self.inp4 = Button(text=settings['BTN4'], on_press=self.select_button4, size=(200/1920*screen_width, 30/1080*screen_height))
         label_5 = Label(text='Швидко до низу:', size_hint=(None, None), size=(170/1920*screen_width, 30/1080*screen_height))
-        self.inp5 = Button(text=BTN5, on_press=self.select_button5, size=(200/1920*screen_width, 30/1080*screen_height))
+        self.inp5 = Button(text=settings['BTN5'], on_press=self.select_button5, size=(200/1920*screen_width, 30/1080*screen_height))
 
         layout_1.add_widget(label_1)
         layout_1.add_widget(self.inp1)
@@ -559,23 +559,18 @@ class Page2(Screen):
     def go_to_main_page(self, instance):
         self.sound_player = MusicPlayer()
         self.sound_player.sound1.play()
-        settings_dir = os.path.dirname(os.path.abspath(__file__))
-        settings_file = os.path.join(settings_dir, 'settings.py')
 
-        BTN1 = self.inp1.text
-        BTN2 = self.inp2.text
-        BTN3 = self.inp3.text
-        BTN4 = self.inp4.text
-        BTN5 = self.inp5.text
+        settings['MUSIC_VOLUME'] = self.music_slider.value
+        settings['SOUND_VOLUME'] = self.sound_slider.value
+        settings['BTN1'] = self.inp1.text
+        settings['BTN2'] = self.inp2.text
+        settings['BTN3'] = self.inp3.text
+        settings['BTN4'] = self.inp4.text
+        settings['BTN5'] = self.inp5.text
 
-        with open(settings_file, 'w') as f:
-            f.write(f"MUSIC_VOLUME = {self.music_slider.value}\n")
-            f.write(f"SOUND_VOLUME = {self.sound_slider.value}\n")
-            f.write(f"BTN1 = '{BTN1}'\n")
-            f.write(f"BTN2 = '{BTN2}'\n")
-            f.write(f"BTN3 = '{BTN3}'\n")
-            f.write(f"BTN4 = '{BTN4}'\n")
-            f.write(f"BTN5 = '{BTN5}'\n")
+        with open('settings.json', 'w') as f:
+            json.dump(settings, f)
+
         app = App.get_running_app()
         app.music_player.music.volume = self.music_slider.value
         app.sound_player.music.volume = self.sound_slider.value

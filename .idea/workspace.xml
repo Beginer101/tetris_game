@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7d30f4eb-f66b-4d93-a0f4-9b063abce781" name="Changes" comment="gamefix, add settings and files of sounds">
+    <list default="true" id="7d30f4eb-f66b-4d93-a0f4-9b063abce781" name="Changes" comment="add new sounds and page with information about project, new README">
       <change afterPath="$PROJECT_DIR$/build/tetris/Analysis-00.toc" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/tetris/EXE-00.toc" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/tetris/PKG-00.toc" afterDir="false" />
@@ -18,7 +18,8 @@
       <change afterPath="$PROJECT_DIR$/build/tetris/tetris.pkg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/tetris/warn-tetris.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/build/tetris/xref-tetris.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/settings.json" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/Alternity-8w7J.ttf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/figures/1.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/figures/2.png" afterDir="false" />
@@ -34,42 +35,27 @@
       <change afterPath="$PROJECT_DIR$/dist/sourses/main_back/5.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/delete_line.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/end.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/get-down.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/get_down.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/level1_2.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/level3_4.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/level5.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/main_back.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/moving_figures.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/press_button.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/rotation-figures.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/sourses/sounds/rotation_figures.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/sourses/tetris.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/tetris.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sourses/logo_page3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sourses/sounds/delete_line.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sourses/sounds/end.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sourses/sounds/get-down.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sourses/sounds/level1_2.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sourses/sounds/level3_4.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sourses/sounds/level5.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sourses/sounds/main_back.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sourses/sounds/moving_figures.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sourses/sounds/press_button.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sourses/sounds/rotation-figures.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mprofile_20240604094157.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sourses/sounds/get_down.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sourses/sounds/rotation_figures.wav" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/tetris.spec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourses/sound/delete_line.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourses/sound/end.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourses/sound/get_down.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourses/sound/level1_2.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourses/sound/level3-4.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourses/sound/level5.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourses/sound/main_back.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourses/sound/moving figures.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourses/sound/press_button.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sourses/sound/rotation figures.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tetris_interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/tetris.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourses/sounds/get-down.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourses/sounds/rotation-figures.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetris.py" beforeDir="false" afterPath="$PROJECT_DIR$/tetris.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +66,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="package.json" />
       </list>
     </option>
   </component>
@@ -97,25 +84,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Python.kp.executor": "Run",
-    "Python.settings.executor": "Run",
-    "Python.tetris.executor": "Run",
-    "Python.tetris_game.executor": "Run",
-    "Python.tetris_interface (2).executor": "Run",
-    "Python.tetris_interface.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/User/PycharmProjects/sosi",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Python.kp.executor&quot;: &quot;Run&quot;,
+    &quot;Python.settings.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tetris.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tetris_game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tetris_interface (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.tetris_interface.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/PycharmProjects/sosi&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -142,6 +129,8 @@
       <workItem from="1717310774492" duration="26744000" />
       <workItem from="1717412449904" duration="429000" />
       <workItem from="1717412903888" duration="9972000" />
+      <workItem from="1717424490569" duration="20112000" />
+      <workItem from="1717484229663" duration="1254000" />
     </task>
     <task id="LOCAL-00001" summary="create game and start interface">
       <option name="closed" value="true" />
@@ -159,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717357148101</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add new sounds and page with information about project, new README">
+      <option name="closed" value="true" />
+      <created>1717424589168</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1717424589168</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,13 +189,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="create game and start interface" />
     <MESSAGE value="gamefix, add settings and files of sounds" />
-    <option name="LAST_COMMIT_MESSAGE" value="gamefix, add settings and files of sounds" />
+    <MESSAGE value="add new sounds and page with information about project, new README" />
+    <option name="LAST_COMMIT_MESSAGE" value="add new sounds and page with information about project, new README" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/tetris_interface_py$tetris_interface__2_.coverage" NAME="tetris_interface (2) Coverage Results" MODIFIED="1717421521166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/tetris_interface_py$tetris_interface.coverage" NAME="tetris_interface Coverage Results" MODIFIED="1717414478359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/kurs$settings.coverage" NAME="settings Coverage Results" MODIFIED="1717347995614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/tetris_interface_py$tetris.coverage" NAME="tetris Coverage Results" MODIFIED="1717422354678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/tetris_interface_py$tetris.coverage" NAME="tetris Coverage Results" MODIFIED="1717480517151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/kurs$tetris_interface.coverage" NAME="tetris_interface Coverage Results" MODIFIED="1717356970824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/kurs$kp.coverage" NAME="kp Coverage Results" MODIFIED="1717345929817" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/kurs$tetris_game.coverage" NAME="tetris_game Coverage Results" MODIFIED="1717253977704" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
