@@ -91,6 +91,7 @@ class TetrisGame(Widget):
         self.level = int(1)
         self.board = [[0 for j in range(COLS)] for i in range(ROWS)]
         self.next = None
+        self.pause = False
         self.gameover = False
         self.new_figure()
         self.counter = 0
@@ -152,13 +153,29 @@ class TetrisGame(Widget):
             if self.gameover:
                 self.sound_player = MusicPlayer()
                 self.sound_player.sound9.play()
-                Color(*BLACK)
-                rect = (775/1920*screen_width, 425/1080*screen_height, 370/1920*screen_width, 230/1080*screen_height)
-                Rectangle(pos=(rect[0], rect[1]), size=(rect[2], rect[3]))
-                Line(rectangle=rect, width=2, color=Color(*RED))
-                self.add_widget(Label(text='Гра закінчена', font_size=40*(screen_width/1920), color=WHITE, pos=((rect[0] + rect[2] // 3), rect[1] + rect[3] // 2)))
-                self.add_widget(Label(text='Натисніть r, щоб розпочати знову ', font_size=20*(screen_width/1920), color=RED, pos=((rect[0] + rect[2] // 3), rect[1] + rect[3] // 3.5)))
-                self.add_widget(Label(text='Натисніть q, щоб вийти', font_size=20*(screen_width/1920), color=RED, pos=((rect[0] + rect[2] // 3), rect[1] + rect[3] // 9)))
+                self.show_gameover_screen()
+            elif not self.can_move:
+                self.show_pause_screen()
+
+    def show_gameover_screen(self):
+        self.sound_player = MusicPlayer()
+        self.sound_player.sound9.play()
+        Color(*BLACK)
+        rect = (775 / 1920 * screen_width, 425 / 1080 * screen_height, 370 / 1920 * screen_width, 230 / 1080 * screen_height)
+        Rectangle(pos=(rect[0], rect[1]), size=(rect[2], rect[3]))
+        Line(rectangle=rect, width=2, color=Color(*RED))
+        self.add_widget(Label(text='Гра закінчена', font_size=40 * (screen_width / 1920), color=WHITE, pos=((rect[0] + rect[2] // 3), rect[1] + rect[3] // 2)))
+        self.add_widget(Label(text='Натисніть r, щоб розпочати знову', font_size=20 * (screen_width / 1920), color=RED, pos=((rect[0] + rect[2] // 3), rect[1] + rect[3] // 3.5)))
+        self.add_widget(Label(text='Натисніть q, щоб вийти', font_size=20 * (screen_width / 1920), color=RED, pos=((rect[0] + rect[2] // 3), rect[1] + rect[3] // 9)))
+
+    def show_pause_screen(self):
+        Color(*BLACK)
+        rect = (775 / 1920 * screen_width, 425 / 1080 * screen_height, 370 / 1920 * screen_width, 230 / 1080 * screen_height)
+        Rectangle(pos=(rect[0], rect[1]), size=(rect[2], rect[3]))
+        Line(rectangle=rect, width=2, color=Color(*BLUE))
+        self.add_widget(Label(text='Гра на паузі', font_size=40 * (screen_width / 1920), color=WHITE, pos=((rect[0] + rect[2] // 3), rect[1] + rect[3] // 2)))
+        self.add_widget(Label(text='Натисніть p, щоб продовжити', font_size=20 * (screen_width / 1920), color=RED, pos=((rect[0] + rect[2] // 3), rect[1] + rect[3] // 3.5)))
+
 
     def new_figure(self):
         if not self.next:
@@ -347,15 +364,17 @@ class MainPage(Screen):
     def __init__(self, **kwargs):
         super(MainPage, self).__init__(**kwargs)
         Window.fullscreen = 'auto'
-        layout_img = BoxLayout(orientation='vertical', spacing=30/1080*screen_height, padding=(25/1920*screen_width, 10/1080*screen_height, 330/1920*screen_width, 500/1080*screen_height))
+        self.falling_event = None
+        self.falling_images = []
+        layout_img = BoxLayout(orientation='vertical', spacing=30 / 1080 * screen_height, padding=(25 / 1920 * screen_width, 10 / 1080 * screen_height, 330 / 1920 * screen_width, 500 / 1080 * screen_height))
         self.img = AsyncImage(source="sourses/tetris.png", size_hint=(1.2, 1.2), allow_stretch=True)
-        layout = BoxLayout(orientation='vertical', spacing=30/1080*screen_height, padding=(10/1920*screen_width, 250/1080*screen_height, 10/1920*screen_width, 250/1080*screen_height))
-        self.btn1 = Button(text='Один гравець', on_press=self.player1, size_hint=(None, None), size=(170/1920*screen_width, 50/1080*screen_height), pos_hint={'center_x': 0.5, 'center_y': 0.5})
-        self.btn2 = Button(text='Налаштування', on_press=self.options, size_hint=(None, None), size=(170/1920*screen_width, 50/1080*screen_height), pos_hint={'center_x': 0.5, 'center_y': 0.5})
-        self.btn3 = Button(text='Інше', on_press=self.other, size_hint=(None, None), size=(170/1920*screen_width, 50/1080*screen_height), pos_hint={'center_x': 0.5, 'center_y': 0.5})
-        self.btn4 = Button(text='Вихід', on_press=self.exit, size_hint=(None, None), size=(170/1920*screen_width, 50/1080*screen_height), pos_hint={'center_x': 0.5, 'center_y': 0.5})
+        layout = BoxLayout(orientation='vertical', spacing=30 / 1080 * screen_height, padding=(10 / 1920 * screen_width, 250 / 1080 * screen_height, 10 / 1920 * screen_width, 250 / 1080 * screen_height))
+        self.btn1 = Button(text='Один гравець', on_press=self.player1, size_hint=(None, None), size=(170 / 1920 * screen_width, 50 / 1080 * screen_height), pos_hint={'center_x': 0.5, 'center_y': 0.5})
+        self.btn2 = Button(text='Налаштування', on_press=self.options, size_hint=(None, None), size=(170 / 1920 * screen_width, 50 / 1080 * screen_height), pos_hint={'center_x': 0.5, 'center_y': 0.5})
+        self.btn3 = Button(text='Інше', on_press=self.other, size_hint=(None, None), size=(170 / 1920 * screen_width, 50 / 1080 * screen_height), pos_hint={'center_x': 0.5, 'center_y': 0.5})
+        self.btn4 = Button(text='Вихід', on_press=self.exit, size_hint=(None, None), size=(170 / 1920 * screen_width, 50 / 1080 * screen_height), pos_hint={'center_x': 0.5, 'center_y': 0.5})
         self.figures = [f for f in os.listdir('sourses/figures') if f.endswith('.png')]
-        Clock.schedule_interval(self.Falling, 1/10)
+
         layout.add_widget(self.btn1)
         layout.add_widget(self.btn2)
         layout.add_widget(self.btn3)
@@ -363,6 +382,19 @@ class MainPage(Screen):
         layout_img.add_widget(self.img)
         self.add_widget(layout_img)
         self.add_widget(layout)
+
+    def on_enter(self):
+        self.falling_event = Clock.schedule_interval(self.Falling, 1 / 10)
+
+    def on_leave(self):
+        if self.falling_event:
+            self.falling_event.cancel()
+        self.clear_falling_images()
+
+    def clear_falling_images(self):
+        for img in self.falling_images:
+            self.remove_widget(img)
+        self.falling_images = []
 
     def player1(self, instance):
         self.sound_player = MusicPlayer()
@@ -387,16 +419,17 @@ class MainPage(Screen):
     def Falling(self, *args):
         figure_path = os.path.join('sourses/figures', random.choice(self.figures))
         image = Image(source=figure_path)
-        i= random.randrange(-100, 100)
+        i = random.randrange(-100, 100)
         if (i % 2):
             image.center_x = random.randrange(-1000, -250)
         else:
-            image.center_x =  random.randrange(250, 1000)
+            image.center_x = random.randrange(250, 1000)
         image.y = Window.height
         image.rotation = uniform(-45, 45)
         anim = Animation(center_y=-100, duration=5)
         anim.start(image)
         self.add_widget(image)
+        self.falling_images.append(image)
         return image
 
 class Page1(Screen):
